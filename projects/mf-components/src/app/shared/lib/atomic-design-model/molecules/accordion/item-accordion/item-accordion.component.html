@@ -1,0 +1,30 @@
+<cdk-accordion-item
+  #accordionItem="cdkAccordionItem"
+  class="example-accordion-item"
+  role="button"
+  tabindex="0"
+  [expanded]="expanded"
+  [attr.id]="'accordion-header-' + key"
+  [attr.aria-expanded]="accordionItem.expanded"
+  [attr.aria-controls]="'accordion-body-' + key"
+>
+  <div
+    [ngClass]="[
+      'mobilform-accordion__header',
+      accordionItem.expanded ? 'collapsed' : ''
+    ]"
+    (click)="accordionItem.toggle()"
+  >
+    <mat-icon class="mobilform-accordion__header__icon">{{icon}}</mat-icon>
+    {{ title }}
+  </div>
+  <div
+    class="mobilform-accordion__body"
+    role="region"
+    [style.display]="accordionItem.expanded ? '' : 'none'"
+    [attr.id]="'accordion-body-' + key"
+    [attr.aria-labelledby]="'accordion-header-' + key"
+  >
+    <ng-content></ng-content>
+  </div>
+</cdk-accordion-item>

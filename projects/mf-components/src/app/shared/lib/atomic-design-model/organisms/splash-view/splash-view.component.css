@@ -1,0 +1,24 @@
+.mobilform-splash-view {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  background-color: #363636;
+}
+.mobilform-splash-view__description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+
+}
+
+.mobilform-splash-view__description > span {
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  margin-top: 1rem;
+}
+

@@ -1,0 +1,25 @@
+<section class="port-dynamic-form-builder">
+  <!-- <code-editor-atom></code-editor-atom> -->
+    <section class="p-4 flex justify-end">
+      <!-- <toggle-atom
+        [formGroup]="toggleValueFormGroup"
+        class="mr-2"
+        key="modeGridPosition"
+        label="Grid Mode"
+      ></toggle-atom> -->
+      <toggle-atom
+        [formGroup]="toggleValueFormGroup"
+        key="modeProduction"
+        label="Production Mode"
+      ></toggle-atom>
+    </section>
+    <dynamic-form-builder 
+        [modeBuildProduction]="toggleValueFormGroup.value.modeProduction" 
+        [modeGridPosition]="toggleValueFormGroup.value.modeGridPosition" 
+        [fields]="schemaFormFields.fields" 
+        [schemeColumns]="schemaFormFields.schemeColumns" 
+        [generalSetting]="schemaFormFields.generalSetting"
+        [fetching]="schemaFormFields.fetching">
+    </dynamic-form-builder>
+</section>
+

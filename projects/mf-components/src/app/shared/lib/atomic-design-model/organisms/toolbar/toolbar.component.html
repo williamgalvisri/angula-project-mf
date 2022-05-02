@@ -1,0 +1,218 @@
+<side-menu-container-molecule [className]="'slide-right-toolbar'" [ngSwitch]="section">
+  <ng-container *ngSwitchCase="'elements'">
+    <section class="mobilfor-toolbar__container__header">
+      Components
+    </section>
+    <ng-container [ngTemplateOutlet]="toolContent"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'forms'">
+    <section class="mobilfor-toolbar__container__header">
+      Forms
+    </section>
+    <ng-container [ngTemplateOutlet]="formSectionContent"></ng-container>
+  </ng-container>
+</side-menu-container-molecule>
+
+<ng-template #toolContent>
+  <accordion-melecule>
+    <item-accordion-molecule *ngFor="let section of sectionElementsTools" [key]="section.key" [title]="section.title" [icon]="section.icon" [expanded]="section.expanded">
+        <section
+          cdkDropList
+          [cdkDropListData]="section.elements"
+          cdkDropListSortingDisabled
+          [cdkDropListConnectedTo]="section.typeElements === getTypeElementsTools('LAYOUT') ? 'layout-builder-section': connectColumnList"
+          class="mobilfor-toolbar__container__grid"
+          [id]="idListToolElement"
+        >
+          <div
+            *ngFor="let element of section.elements"
+            [id]="element"
+            cdkDrag
+            [cdkDragData]="element"
+            class="mobilfor-toolbar__container__grid-items"
+            [attr.title]="valueFromElement(element).title"
+          >
+            <mat-icon class="mobilfor-toolbar__container__grid-items__icon">{{ valueFromElement(element).icon }}</mat-icon>
+            <span class="text-sm">{{ valueFromElement(element).title }}</span>
+          </div>
+        </section>
+    </item-accordion-molecule>
+  </accordion-melecule>
+</ng-template>
+
+
+<ng-template #formSectionContent>
+  <div *ngIf="stateFormToolbar === 'none'" class="mobilform-form__container">
+    <section class="mobilform-form__container__section mobilform-form__container__section__create-form">
+      <span class="mobilform-form__container__create-form__label">Create form</span>
+      <plus-icon-svg class="mobilform-form__container__create-form__button" (click)="createForm()" [dimension]="24"></plus-icon-svg>
+    </section>
+    <!-- <section class="mobilform-form__container__section mobilform-form__container__section__search">
+      <atom-text-field
+        class="mobilform-form__container__section__search__input"
+        [style]="elementThemingSettingNav?.['text'] ?? {}"
+        [key]="'search'"
+        [type]="'text'"
+        [placeholder]="'Search form'"
+        [formGroup]="searchFormGroup"
+      ></atom-text-field>
+      <search-icon-svg class="mobilform-form__container__create-form__button"></search-icon-svg>
+    </section> -->
+    <section class="mobilform-form__container__section__forms-container">
+      <section class="mobilform-form__container__section__forms-container__form" *ngFor="let form of forms">
+        <span 
+          (click)="selectForm(form._id)"
+          [ngClass]="{
+            'mobilform-form__container__section__forms-container__form__title': true,  
+            'mobilform-form__container__section__forms-container__form__title--active': selectedForm?._id === form._id
+          }"
+        >{{form.name}}</span>
+        <setting-icon-svg *ngIf="selectedForm?._id === form._id" class="mobilform-form__container__create-form__button" (click)="updateForm(form._id)"></setting-icon-svg>
+      </section>
+    </section>
+  </div>
+  <div *ngIf="stateFormToolbar !== 'none'" class="mobilform-form__form__container">
+    <section class="mobilform-form__form__container__section mobilform-form__form__container__section__title">
+      <chevron-icon-svg class="mobilform-form__container__create-form__button" (click)="cancelCreate()"></chevron-icon-svg>
+      <span class="mobilform-form__form__container__section__title__label">{{stateFormToolbar === 'create' ? 'Create form' : 'Update '+selectedForm?.name }}</span>
+    </section>
+    <section class="mobilform-form__form__container__element">
+      <label-text-field-moelcule
+        [key]="'name'"
+        [label]="'Name'"
+        [placeholder]="'Name'"
+        [type]="'text'"
+        [formGroup]="actionFormFormGroup"
+        [elementTheming]="elementTheming"
+      ></label-text-field-moelcule>
+    </section>
+    <section class="mobilform-form__form__container__element">
+      <label-text-field-moelcule
+        [key]="'description'"
+        [label]="'Description'"
+        [placeholder]="'Description'"
+        [type]="'text'"
+        [multiline]="true"
+        [formGroup]="actionFormFormGroup"
+        [elementTheming]="elementTheming"
+      ></label-text-field-moelcule>
+    </section>
+    <section class="mobilform-form__form__container__element">
+      <label-text-field-moelcule
+        [key]="'endpointUrlBase'"
+        [label]="'BaseUrlFetching Form'"
+        [placeholder]="'BaseUrlFetching'"
+        [type]="'text'"
+        [formGroup]="actionFormFormGroup"
+        [elementTheming]="elementTheming"
+      ></label-text-field-moelcule>
+    </section>
+    <section class="mobilform-form__form__container__element">
+      <ng-container [ngTemplateOutlet]="sectionOptions" [ngTemplateOutletContext]="{
+        keyArrayName: 'variables',
+        titleSection: 'Variables',
+        labelButtonAdd: 'Add Variable',
+        formGroup: actionFormFormGroup,
+        newElement: createItemFormArray()
+      }" ></ng-container> 
+    </section>
+    <ng-container [ngTemplateOutlet]="sectionFetching" ></ng-container>
+    <section class="mobilform-form__form__container__element">
+      <button-atom [title]="stateFormToolbar === 'create' ? 'Save' : 'Update'" [disabled]="!isValidForm" [style]="elementTheming['button']" (click)="actionForm(stateFormToolbar)"></button-atom>
+    </section>
+    <section *ngIf="stateFormToolbar === 'update'" class="mobilform-form__form__container__element">
+      <button-atom [title]="'Remove'" [disabled]="!isValidForm" [style]="elementTheming['button']" (click)="actionForm('remove')"></button-atom>
+    </section>
+  </div>
+</ng-template>
+
+<ng-template #sectionOptions 
+  let-keyArrayName="keyArrayName" 
+  let-titleSection="titleSection" 
+  let-labelButtonAdd="labelButtonAdd" 
+  let-formGroup="formGroup" 
+  let-newElement="newElement">
+  <label-atom
+      [title]="titleSection"
+      [style]="elementTheming['label']"
+  ></label-atom>
+  <ng-container *ngIf="formGroup.controls?.[keyArrayName]?.value.length">
+    <section [formGroup]="formGroup">
+      <ng-container [formArrayName]="keyArrayName"> 
+        <div  *ngFor="let _ of getFormArray(formGroup, keyArrayName).controls; let i = index">
+          <section class="mobilform-settings-bar_container__body__elements__options-grid">
+              <section class="mobilform-settings-bar_container__body__elements_options-grid__section-input">
+                  <label-text-field-moelcule
+                      [key]="'variable'"
+                      [placeholder]="'variable'"
+                      [type]="'text'"
+                      [elementTheming]="elementThemingSettingNav"
+                      [formGroup]="getGroupOption(formGroup, keyArrayName, i)"
+                  ></label-text-field-moelcule>
+              </section>
+              <section class="mobilform-settings-bar_container__body__elements_options-grid__section-button">
+                  <plus-circle-icon-svg class="mobilform-settings-bar_container__body__elements_options-grid__section-button__icon" (click)="addNewControl(formGroup, keyArrayName, newElement)"></plus-circle-icon-svg>
+                  <minus-circle-icon-svg class="mobilform-settings-bar_container__body__elements_options-grid__section-button__icon" (click)="removeControl(formGroup, keyArrayName, i)"></minus-circle-icon-svg>
+              </section>
+          </section>
+        </div>
+      </ng-container>
+    </section>
+  </ng-container>
+  <ng-container *ngIf="!formGroup.controls?.[keyArrayName]?.controls?.length">
+      <ng-container [ngTemplateOutlet]="addButtonOptions" [ngTemplateOutletContext]="{
+          label: labelButtonAdd,
+          key: keyArrayName,
+          formGroup: formGroup,
+          newElement: newElement
+        }" ></ng-container>
+  </ng-container>
+</ng-template >
+
+<ng-template #sectionFetching>
+  <section class="mobilform-toolbar-bar_container__body__elements" >
+    <label-dropdown-molecule
+      [key]="'typEvent'"
+      [label]="'Event Type'"
+      [options]="elementsOptionEventType"
+      [formGroup]="getFormGroupFromFormGroupGeneral(actionFormFormGroup, 'fetching')"
+      [elementTheming]="elementTheming"
+    ></label-dropdown-molecule>
+  </section>
+  <section class="mobilform-toolbar-bar_container__body__elements" >
+    <label-text-field-moelcule
+    [key]="'urlFetching'"
+    [label]="'Url Fetching'"
+    [type]="'text'"
+    [formGroup]="getFormGroupFromFormGroupGeneral(actionFormFormGroup, 'fetching')"
+    [elementTheming]="elementTheming"
+    ></label-text-field-moelcule>
+  </section>
+  <section class="mobilform-toolbar-bar_container__body__elements" >
+    <label-dropdown-molecule
+      [key]="'variable'"
+      [label]="'Assign To Variable'"
+      [options]="variables"
+      [formGroup]="getFormGroupFromFormGroupGeneral(actionFormFormGroup, 'fetching')"
+      [elementTheming]="elementTheming"
+    ></label-dropdown-molecule>
+  </section>
+</ng-template>
+
+<ng-template #addButtonOptions let-label="label" let-key="key" let-formGroup="formGroup" let-newElement="newElement">
+<section class="mobilform-settings-bar_container__body__elements__button-add-column" (click)="addNewControl(formGroup, key, newElement)">
+    <plus-icon-svg [dimension]="30" [isCircle]="false" ></plus-icon-svg>
+    <label-atom
+        [title]="label"
+        [style]="{
+            fontSize: '18px',
+            color: 'white',
+            marginBottom: '0',
+            cursor: 'pointer'
+        }"
+    ></label-atom>
+</section>
+</ng-template>
+
+
+

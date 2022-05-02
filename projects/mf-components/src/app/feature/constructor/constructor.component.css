@@ -1,0 +1,8 @@
+.mobilform-constructor__conatiner {
+    height: 100%;
+    display: flex;
+    background: #363636;
+}
+.mobilform-canvas-area {
+    width: 100%;
+}

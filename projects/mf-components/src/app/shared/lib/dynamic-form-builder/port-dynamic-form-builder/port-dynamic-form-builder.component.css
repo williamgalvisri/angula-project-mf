@@ -1,0 +1,5 @@
+.port-dynamic-form-builder {
+    height: calc(100vh - 60px);
+    overflow-y: hidden;
+    background: white;
+}

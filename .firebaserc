@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "mobilform"
+  },
+  "targets": {
+    "mobilform": {
+      "hosting": {
+        "mf-components": [
+          "mobilforms-app"
+        ]
+      }
+    }
+  }
+}

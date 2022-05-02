@@ -1,0 +1,13 @@
+<button
+  [disabled]="disabled || loading || isValid"
+  [id]="key"
+  [name]="key"
+  [ngStyle]="style"
+  [ngClass]="['mobilform-button-atom', disabled || loading || isValid ? 'mobilform-button-atom__disable' : '']"
+  (click)="onEventTriggered()"
+>
+  <ng-container *ngIf="loading">
+    <section class="mobilform-button-atom__loading"><spiner-atom></spiner-atom></section>
+  </ng-container>
+  <ng-container *ngIf="!loading">{{title}}</ng-container>
+</button>

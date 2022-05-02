@@ -1,0 +1,99 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'tabulator-tables/dist/css/tabulator_bulma.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-animating {
+  transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+/* .slide-right-toolbar {
+  z-index: 1;
+	-webkit-animation: slide-right 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
+	        animation: slide-right 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
+          animation-delay: 1s;
+}
+
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(-40rem);
+            transform: translateX(-40rem);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(-40rem);
+            transform: translateX(-40rem);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+.slide-bottom {
+	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+@-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-3.75rem);
+            transform: translateY(-3.75rem);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-3.75rem);
+            transform: translateY(-3.75rem);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+
+.slide-right-vertical-nav {
+  z-index: 210;
+	-webkit-animation: slide-right-vertical-nav 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
+	        animation: slide-right-vertical-nav 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
+          animation-delay: 0.5s;
+}
+
+@-webkit-keyframes slide-right-vertical-nav {
+  0% {
+    -webkit-transform: translateX(-60px);
+            transform: translateX(-60px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@keyframes slide-right-vertical-nav {
+  0% {
+    -webkit-transform: translateX(-60px);
+            transform: translateX(-60px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+} */

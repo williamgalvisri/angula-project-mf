@@ -1,0 +1,168 @@
+<section class="dynamic-form-builder-general">
+  <splash-view-organism *ngIf="!formIsReady" [showSvg]="false" [description]="'building form'"></splash-view-organism>
+  <section style="position: relative; width: 100%; height: 100%;">
+    <section style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;">
+      <ng-container *ngIf="formIsReady" [ngTemplateOutlet]="formFreeLayout"></ng-container>
+    </section>
+  </section>
+</section>
+
+<ng-template #formFreeLayout>
+  <section *ngIf="modeGridPosition && !modeBuildProduction" [id]="'gridZone'" class="border-2 border-black border-dotted w-full" cdkDropList [cdkDropListData]="getKeyFields()" (cdkDropListDropped)="drop($event)">Drop zone</section>
+  <section [ngClass]="[!modeBuildProduction ? 'wrapper-grid' : '']">
+    <pan-zoom *ngIf="!modeBuildProduction" [config]="panZoomConfig">
+      <ng-container [ngTemplateOutlet]="contentCanvas"> </ng-container>
+    </pan-zoom>
+    <ng-container *ngIf="modeBuildProduction" [ngTemplateOutlet]="contentCanvas"> </ng-container>
+  </section>
+</ng-template>
+
+<ng-template #contentCanvas>
+  <section [ngClass]="[!modeBuildProduction ? 'grid-container' : '']" id="boundary" #boundary>
+    <section *ngIf="!modeBuildProduction" class="grid-container__grid-figure--horizontal" >
+    </section>
+    <section *ngFor="let element of fields">
+      <section *ngIf="!modeBuildProduction">
+        <resize-wrapper-molecule [bounds]="boundary" [position]="element?.propertiesStyle?.position ?? {x: 0, y:0}" [dimension]="element?.propertiesStyle?.dimensions ?? {width: 0, height: 0}" [typeElement]="element.type" (onEmitDimensionPosition)="onSaveDimensionElement($event, element.key)">
+          <section class="handler-content">
+            <ng-container 
+              [ngTemplateOutlet]="formElementComponent" 
+              [ngTemplateOutletContext]="{
+                fieldString: element.key, 
+                keyRow: null, columKey:null, 
+                elemenType: element.type,
+                propertiesStyle: element.propertiesStyle
+              }"></ng-container>
+          </section>
+        </resize-wrapper-molecule>
+      </section>
+      <section [ngStyle]="{
+        'position': 'absolute',
+        'padding': '10px',
+        'top': element.propertiesStyle.position?.y+'px',
+        'left': element.propertiesStyle.position?.x+'px'
+      }">
+        <ng-container 
+          *ngIf="modeBuildProduction" 
+          
+          [ngTemplateOutlet]="formElementComponent"
+          [ngTemplateOutletContext]="{
+            fieldString: element.key, 
+            elemenType: element.type,
+            propertiesStyle: element.propertiesStyle
+          }">
+        </ng-container>
+      </section>
+    </section>
+  </section>
+</ng-template>
+
+<ng-template #formElementComponent 
+  let-keyRow="keyRow" 
+  let-columKey="columKey" 
+  let-fieldString="fieldString" 
+  let-elemenType="elemenType"
+  let-propertiesStyle="propertiesStyle"
+>
+  <section class="relative element-card-parent">
+    <div
+      *ngIf="!modeBuildProduction"
+      class="element-card-child bg-black absolute h-full w-full opacity-25 cursor-move" style="z-index: 100;">
+      <section class="flex justify-center items-center h-full w-full">
+        <mat-icon class="cursor-pointer text-green-500" (click)="openSettings(fieldString, keyRow, columKey)">settings</mat-icon>
+        <mat-icon class="text-red-500 cursor-pointer" (click)="removeElement(fieldString)">delete</mat-icon>
+      </section>
+    </div>
+    <section  
+    [ngStyle]="{
+      'minHeight': 'auto',
+      'width': modeGridPosition ? (propertiesStyle.dimensions.width)+'px' : 'auto',
+      'height': 'auto',
+      'maxWidth': '-webkit-fill-available',
+      'maxHeight': '-webkit-fill-available'
+    }">
+      <field-builder
+        [field]="getField(fieldString)"
+        [formGroup]="this.formGroup"
+      ></field-builder>
+    </section>
+  </section>
+</ng-template>
+
+
+
+<!-- GRID MODE -->
+<!-- <ng-template #formGridLayout>
+  <form [formGroup]="formGroup" cdkDropListGroup>
+    <section
+      class="p-4"
+      id="layout-builder-section"
+      cdkDropList
+      [cdkDropListData]="schemeColumns"
+      (cdkDropListDropped)="dropLayout($event)"
+    >
+      <div
+        cdkDrag
+        [cdkDragDisabled]="modeBuildProduction"
+        class="mb-2"
+        [cdkDragData]="rowLayout"
+        [id]="rowLayout.key"
+        *ngFor="let rowLayout of schemeColumns"
+      >
+        <section [ngClass]="{'border border-red-400 hover:border-dotted hover:border-2 p-2 m': !modeBuildProduction}">
+          <ng-container
+            [ngTemplateOutlet]="columContainerElements"
+            [ngTemplateOutletContext]="{
+              keyRow: rowLayout.key,
+              schemaLayout: rowLayout.schemaLayout,
+              numberColumns: rowLayout.numberColumns
+            }"
+          >
+          </ng-container>
+          <section *ngIf="!modeBuildProduction" class="border-t py flex justify-end">
+            <mat-icon class="text-slate-400 cursor-pointer" (click)="removeColumn(rowLayout.key)">remove</mat-icon>
+            <mat-icon (click)="addColumn(rowLayout.key)" class="text-slate-400 cursor-pointer"
+              >add</mat-icon
+            >
+            <mat-icon class="text-slate-400 cursor-move" cdkDragHandle>drag_indicator</mat-icon
+            >
+          </section>
+        </section>
+      </div>
+    </section>
+  </form>
+
+</ng-template> -->
+
+<!-- 
+<ng-template
+  #columContainerElements
+  let-keyRow="keyRow"
+  let-schemaLayout="schemaLayout"
+  let-numberColumns="numberColumns"
+>
+  <div class="grid grid-cols-auto-fit" cdkDropListGroup>
+    <section
+      class="border w-full"
+      *ngFor="let column of schemaLayout; let i = index"
+      [id]="column.key"
+      cdkDropList
+      [cdkDropListData]="column.schemaColums"
+      [cdkDropListConnectedTo]="connectColumnList"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div
+        cdkDrag
+        [cdkDragData]="fieldString"
+        [cdkDragDisabled]="modeBuildProduction"
+        *ngFor="let fieldString of column.schemaColums"
+        class="grid gap-4"
+      >
+        <card-molecule *ngIf="!modeBuildProduction" [extendedClass]="'bg-white m-2'+(selectedFieldProperties?.selectedFieldKey === fieldString ? ' border-2 border-black border-dotted ' : '')">
+          <ng-container [ngTemplateOutlet]="formElementComponent" [ngTemplateOutletContext]="{fieldString: fieldString, keyRow: keyRow, columKey:column.key}"></ng-container>
+        </card-molecule>
+        <ng-container *ngIf="modeBuildProduction" [ngTemplateOutlet]="formElementComponent" [ngTemplateOutletContext]="{fieldString: fieldString}"></ng-container>
+      </div>
+    </section>
+  </div>
+</ng-template> -->

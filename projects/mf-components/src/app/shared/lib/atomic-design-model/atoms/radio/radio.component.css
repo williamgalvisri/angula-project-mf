@@ -1,0 +1,8 @@
+.mobilform-radio__wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.mobilform-radio__wrapper__input {
+    margin-right: .5rem;
+}

@@ -1,0 +1,20 @@
+<label-atom
+  *ngIf="label"
+  [title]="label"
+  [required]="required"
+  [formGroup]="formGroup"
+  [style]="elementTheming[schemeComponent.ELEMENT_LABEL]"
+></label-atom>
+<atom-text-field
+  [style]="elementTheming[schemeComponent.ELEMENT_TEXT]"
+  [key]="key"
+  [type]="type"
+  [multiline]="multiline"
+  [mask]="mask"
+  [value]="value"
+  [disabled]="disabled"
+  [specialCharacters]="specialCharacters"
+  [patterns]="patterns"
+  [placeholder]="placeholder"
+  [formGroup]="formGroup"
+></atom-text-field>

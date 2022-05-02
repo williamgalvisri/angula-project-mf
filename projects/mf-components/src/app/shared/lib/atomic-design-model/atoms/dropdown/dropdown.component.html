@@ -1,0 +1,15 @@
+<section [formGroup]="formGroup">
+  <select
+    class="mobilform-select" 
+    aria-label="Default select example"
+    [ngStyle]="style"
+    [name]="key"
+    [id]="key"
+    [formControlName]="key"
+  >
+    <option  [ngValue]="''" [disabled]="true">{{placeholder}}</option>
+    <option *ngFor="let opt of options" [ngValue]="opt.key">
+      {{ opt.label }}
+    </option>
+  </select>
+</section>

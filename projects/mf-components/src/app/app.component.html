@@ -1,0 +1,12 @@
+<!-- <section class="min-h-screen p-2 bg-slate-400">
+    <div class="flex">
+      <section class="w-1/4 mr-2">
+          <toolbar-organism [fields]="formSchemaGeneralSettings.fields"></toolbar-organism>
+      </section>
+      <section class="grow">
+          <port-dynamic-form-builder [schemaFormFields]="formSchemaGeneralSettings"></port-dynamic-form-builder>
+      </section>
+    </div>
+</section> -->
+<splash-view-organism *ngIf="!this.cacheLoaderService.appCacheResolved"></splash-view-organism>
+<router-outlet></router-outlet>

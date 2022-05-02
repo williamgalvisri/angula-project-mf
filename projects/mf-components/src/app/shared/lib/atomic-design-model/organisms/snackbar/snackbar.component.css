@@ -1,0 +1,17 @@
+.mobilform-snackbar-organism {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobilform-snackbar-organism__label {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    margin-right: 4.375rem;
+}
+
+.mobilform-snackbar-organism__button {
+    min-width: 144px;
+}

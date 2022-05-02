@@ -1,0 +1,50 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "allowJs": true,
+    "target": "es2020",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@core-mf-components/*": [
+        "projects/mf-components/src/app/core/*"
+      ],
+      "@feature-mf-components/*": [
+        "projects/mf-components/src/app/feature/*"
+      ],
+      "@shared-mf-components/*": [
+        "projects/mf-components/src/app/shared/*"
+      ],
+      "@environments-mf-components/*": [
+        "projects/mf-components/src/environments/*"
+      ],
+      "@utils-mf-components/*": [
+        "projects/mf-components/src/utils/*"
+      ]
+    }
+  },
+  "exclude": [
+    ".git",
+  ],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

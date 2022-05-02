@@ -1,0 +1,91 @@
+<div class="form-group" [formGroup]="formGroup">
+  <label-atom
+    *ngIf="field.label"
+    [key]="field.key"
+    [title]="field.label"
+    [required]="field.required"
+  ></label-atom>
+  <div [ngStyle]="{
+    'height': '-webkit-fill-available'
+  }" [ngSwitch]="field.type">
+    <label-atom
+      *ngSwitchCase="getType('ELEMENT_LABEL')"
+      [key]="field.key"
+      [title]="field.title"
+    ></label-atom>
+    <button-atom
+      *ngSwitchCase="getType('ELEMENT_BUTTON')"
+      [key]="field.key"
+      [title]="field.title"
+      [eventType]="field.eventType"
+      [fetching]="field.fetching"
+      [disableWithControls]="field.disableWithControls"
+      [formGroup]="formGroup"
+    ></button-atom>
+    <label-text-field-moelcule
+      *ngSwitchCase="getType('ELEMENT_TEXT')"
+      [key]="field.key"
+      [multiline]="field.multiline"
+      [type]="field.type"
+      [disabled]="field.disabled"
+      [value]="field.value"
+      [formGroup]="formGroup"
+    >
+    </label-text-field-moelcule>
+    <label-text-field-moelcule
+      *ngSwitchCase="getType('ELEMENT_DATE')"
+      [key]="field.key"
+      [type]="field.type"
+      [formGroup]="formGroup"
+    >
+    </label-text-field-moelcule>
+    <label-text-field-moelcule
+      *ngSwitchCase="getType('ELEMENT_TEXTAREA')"
+      [key]="field.key"
+      [multiline]="true"
+      [type]="field.type"
+      [formGroup]="formGroup"
+    >
+    </label-text-field-moelcule>
+    <label-dropdown-molecule
+      *ngSwitchCase="getType('ELEMENT_DROPDOWN')"
+      [key]="field.key"
+      [options]="field.options"
+      [optionsVariable]="field.optionsVariable"
+      [formGroup]="formGroup"
+      [fetching]="field.fetching"
+    >
+    </label-dropdown-molecule>
+    <label-checkbox-molecule
+      *ngSwitchCase="getType('ELEMENT_CHECKBOX')"
+      [key]="field.key"
+      [title]="field.title"
+      [formGroup]="formGroup"
+    ></label-checkbox-molecule>
+    <label-radio-molecule
+      *ngSwitchCase="getType('ELEMENT_RADIO')"
+      [key]="field.key"
+      [options]="field.options"
+      [formGroup]="formGroup"
+    >
+    </label-radio-molecule>
+    <table-organism 
+      *ngSwitchCase="getType('ELEMENT_TABLE')"
+      [key]="field.key"
+      [header]="field.header"
+      [records]="field.records"
+      [fetching]="field.fetching"
+      [value]="field.value"
+    >
+    </table-organism>
+    <label-example 
+      *ngSwitchCase="getType('ELEMENT_EXAMPLE')">
+    </label-example>
+    <div
+      class="alert alert-danger my-1 p-2 fadeInDown animated"
+      *ngIf="!isValid && isDirty"
+    >
+      {{ field.label }} is required
+    </div>
+  </div>
+</div>

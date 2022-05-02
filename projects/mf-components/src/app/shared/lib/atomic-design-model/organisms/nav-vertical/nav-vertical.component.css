@@ -1,0 +1,24 @@
+.mobilform-organism-nav-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 3.75rem;
+    min-width: 3.75rem;
+    height: calc(100vh - 3.75rem);
+    background: #363636;
+}
+
+.mobilform-organism-nav-vertical__button {
+    max-height: 3.75rem;
+    min-height: 3.75rem;
+    padding: 0.938rem;
+    cursor: pointer;
+}
+
+.mobilform-organism-nav-vertical__button:hover{
+    background: #262626;
+}
+
+.mobilform-organism-nav-vertical__button-active {
+    background: #262626;
+}

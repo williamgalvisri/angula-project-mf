@@ -1,0 +1,24 @@
+.mobilform-label-atom {
+    color: rgb(55 65 81 / 1);
+    font-weight: 700;
+    display: block;
+}
+
+.mobilform-label-atom__required {
+    color: rgb(239 68 68 / 1);
+}
+
+.label__sm {
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+
+.label__md {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.label__xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}

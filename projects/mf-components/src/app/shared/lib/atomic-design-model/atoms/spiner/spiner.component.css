@@ -1,0 +1,22 @@
+.mobilform-spinner {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-image: linear-gradient(
+      180deg,
+      #04bfad 6.33%,
+      #0476d9 52.12%,
+      #e1c532 105.1%
+    )
+    1;
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

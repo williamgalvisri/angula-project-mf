@@ -1,0 +1,13 @@
+<label
+  class="mobilform-label-atom"
+  [id]="key"
+  [ngStyle]="style"
+  [attr.for]="key"
+>
+  {{ title }}
+  <strong
+    class="mobilform-label-atom__required"
+    *ngIf="required"
+    >*</strong
+  >
+</label>

@@ -1,0 +1,18 @@
+
+<label-atom
+  *ngIf="label"
+  [title]="label"
+  [required]="required"
+  [formGroup]="formGroup"
+  [style]="elementTheming[schemeComponent.ELEMENT_LABEL]"
+></label-atom>
+<dropdown-atom
+  [key]="key"
+  [id]="id"
+  [options]="options"
+  [placeholder]="placeholder"
+  [formGroup]="formGroup"
+  [fetching]="fetching"
+  [optionsVariable]="optionsVariable"
+  [style]="elementTheming[schemeComponent.ELEMENT_DROPDOWN]"
+></dropdown-atom>

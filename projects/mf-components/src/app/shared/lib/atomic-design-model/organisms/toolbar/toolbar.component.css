@@ -1,0 +1,175 @@
+.mobilfor-toolbar__container__header{
+    font-size: 1.5rem;
+    padding: 0.75rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.5px solid #FFFFFF;
+}
+
+.mobilfor-toolbar__container__grid {
+    display: grid;
+    grid-gap: 1rem;
+    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mobilfor-toolbar__container__grid-items {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+}
+
+.mobilfor-toolbar__container__grid-items__icon {
+    min-width: 2.75rem;
+    max-width: 2.75rem;
+    min-height: 2.75rem;
+    max-height: 2.75rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobilform-form__container {
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: fit-content(100%) fit-content(100%) 1fr;
+    height: calc(100vh - 121px);
+}
+
+.mobilform-form__form__container {
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.mobilform-form__form__container__element {
+    padding: 10px 0;
+}
+
+.mobilform-toolbar-bar_container__body__elements {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+}
+
+.mobilform-form__container__section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mobilform-form__container__section__create-form {
+    padding: 15px 0;
+}
+
+.mobilform-form__container__create-form__label {
+    font-weight: bold;
+    font-size: 18px;
+}
+.mobilform-form__container__create-form__button {
+    cursor: pointer;
+}
+
+.mobilform-form__container__section__search {
+    padding: 10px 0;
+}
+
+.mobilform-form__container__section__search__input {
+    width: 100%;
+    margin-right: 10px;
+}
+
+
+.mobilform-form__container__section__forms-container {
+    display: flex;
+    flex-flow: column;
+    overflow-y: auto;
+}
+
+.mobilform-form__container__section__forms-container__form {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mobilform-form__container__section__forms-container__form__title {
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-right: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.mobilform-form__container__section__forms-container__form__title--active {
+    font-weight: bold;
+}
+
+.mobilform-form__form__container__section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobilform-form__form__container__section__title {
+    padding: 15px 0;
+    line-height: 1rem;
+}
+
+.mobilform-form__form__container__section__title__label {
+    width: 100%;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 6px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+.mobilform-settings-bar_container__body__elements__options-grid{
+    display: grid;
+    gap: 0.875rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.mobilform-settings-bar_container__body__elements_options-grid__section-input {
+    display: flex;
+    flex-direction: row;
+    gap: 0.875rem;
+    grid-column: span 4 / 4;
+}
+
+.mobilform-settings-bar_container__body__elements_options-grid__section-select {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 4 / 4;
+}
+
+.mobilform-settings-bar_container__body__elements_options-grid__section-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-column: span 1 / span 1;
+}
+
+.mobilform-settings-bar_container__body__elements_options-grid__section-button__icon {
+    cursor: pointer;
+}
+
+.mobilform-settings-bar_container__body__elements__button-add-column {
+    padding: 0.625rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px dashed #FFFFFF;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+}

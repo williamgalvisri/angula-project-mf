@@ -1,0 +1,58 @@
+<!-- <div
+  class="rectangle"
+  mwlResizable
+  [ngStyle]="style"
+  [validateResize]="validate(typeElement)"
+  [enableGhostResize]="true"
+  (resizeEnd)="onResizeEnd($event)"
+>
+  <section class="content">
+    <ng-content></ng-content>
+  </section>
+  <div
+    class="resize-handle-left"
+    mwlResizeHandle
+    [resizeEdges]="{ left: true }"
+  ></div>
+  <div
+    class="resize-handle-right"
+    mwlResizeHandle
+    [resizeEdges]="{ right: true }"
+  ></div>
+</div> -->
+
+<section
+  ngDraggable
+  [bounds]="bounds"
+  [inBounds]="true"
+  [handle]="handle"
+  [gridSize]="5"
+  [zIndex]="'100'"
+  [position]="position"
+  [preventDefaultEvent]="true"
+  (endOffset)="emmitPosition($event)"
+  ngResizable
+  (rzStop)="emmitResize($event)"
+  [rzGrid]="5"
+  [rzHandles]="'w,e'"
+  [rzContainment]="bounds"
+  [rzMinWidth]="90"
+  class="wrapper-element"
+  [ngStyle]="{
+    'width': dimension.width+'px'
+  }"
+>
+  <div class="wrapper-element__content" >
+    <div class="drag-grid" #handle>
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <div class="box-resize_wrapper">
+    <div class="box-resize box-resize--border-top"></div>
+    <div class="box-resize box-resize--border-bottom"></div>
+    <div class="box-resize box-resize--border-left"></div>
+    <div class="box-resize box-resize--border-right"></div>
+    <!-- <div class="box-resize_point-resize box-resize_point-resize-widget box-resize_point-resize--rigth"></div>
+    <div class="box-resize_point-resize box-resize_point-resize-widget box-resize_point-resize--left"></div> -->
+  </div>
+</section>

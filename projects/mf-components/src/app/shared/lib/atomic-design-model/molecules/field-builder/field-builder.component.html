@@ -1,0 +1,35 @@
+<section class="mt-4" [ngSwitch]="field.type">
+  <label-text-field-moelcule
+    *ngSwitchCase="getType('ELEMENT_TEXT')"
+    [key]="field.key"
+    [type]="field.type"
+    [label]="field.label"
+    [required]="field.required"
+    [placeholder]="field.placeholder"
+    [formGroup]="formGroup"
+  ></label-text-field-moelcule>
+  <label-checkbox-molecule
+    *ngSwitchCase="getType('ELEMENT_CHECKBOX')"
+    [key]="field.key"
+    [title]="field.label"
+    [formGroup]="formGroup"
+  ></label-checkbox-molecule>
+  <label-dropdown-molecule
+    *ngSwitchCase="getType('ELEMENT_DROPDOWN')"
+    [key]="field.key"
+    [label]="field.label"
+    [required]="field.required"
+    [options]="field.options"
+    [formGroup]="formGroup"
+  ></label-dropdown-molecule>
+  <!-- Atoms Elements -->
+  <hr-atom 
+    *ngSwitchCase="getType('ELEMENT_HR')" 
+    [key]="field.key"> 
+  </hr-atom>
+  <label-atom
+    *ngSwitchCase="getType('ELEMENT_LABEL')"
+    [key]="field.key"
+    [title]="field.label"
+  ></label-atom>
+</section>

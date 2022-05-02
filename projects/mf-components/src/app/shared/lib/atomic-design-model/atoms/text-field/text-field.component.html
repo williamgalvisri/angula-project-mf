@@ -1,0 +1,58 @@
+<section *ngIf="formGroup" [formGroup]="formGroup">
+  <input
+    *ngIf="!multiline"
+    [id]="key"
+    [name]="key"
+    [formControlName]="key"
+    [placeholder]="placeholder"
+    [ngStyle]="style"
+    [value]="value"
+    [attr.type]="type"
+    [attr.disabled]="disabled ? '' : null"
+    class="mobilform-input"
+    autocomplete="off"
+  />
+  <textarea
+    *ngIf="multiline"
+    [class.is-invalid]="isDirty && !isValid"
+    [id]="key"
+    [name]="key"
+    [ngStyle]="style"
+    [value]="value"
+    [attr.disabled]="disabled ? '' : null"
+    [formControlName]="key"
+    [placeholder]="placeholder"
+    rows="4"
+    class="mobilform-textarea"
+    autocomplete="off"
+  ></textarea>
+</section>
+<ng-container *ngIf="!formGroup">
+  <input
+    *ngIf="!multiline"
+    [id]="key"
+    [name]="key"
+    [formControlName]="key"
+    [placeholder]="placeholder"
+    [attr.disabled]="disabled ? '' : null"
+    [ngStyle]="style"
+    [value]="value"
+    [attr.type]="type"
+    class="mobilform-input"
+    autocomplete="off"
+  />
+  <textarea
+    *ngIf="multiline"
+    [class.is-invalid]="isDirty && !isValid"
+    [id]="key"
+    [name]="key"
+    [ngStyle]="style"
+    [value]="value"
+    [attr.disabled]="disabled ? '' : null"
+    [formControlName]="key"
+    [placeholder]="placeholder"
+    rows="4"
+    class="mobilform-textarea"
+    autocomplete="off"
+  ></textarea>
+</ng-container>

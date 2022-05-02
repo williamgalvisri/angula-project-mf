@@ -1,0 +1,12 @@
+<div class="form-check" [formGroup]="formGroup">
+  <section *ngFor="let opt of options" class="mobilform-radio__wrapper">
+    <input
+      class="mobilform-radio__wrapper__input"
+      type="radio"
+      [value]="opt.key"
+      (change)="changeValue($event)"
+      [checked]="opt.key === this.valueField"
+    />
+    <label-atom [title]="opt.label" [key]="opt.label"></label-atom>
+  </section>
+</div>

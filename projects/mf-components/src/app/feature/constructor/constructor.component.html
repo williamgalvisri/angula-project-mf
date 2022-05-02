@@ -1,0 +1,11 @@
+<ng-container *ngIf="this.cacheLoaderService.appCacheResolved">
+    <nav-organism></nav-organism>
+    <section class="mobilform-constructor__conatiner">
+        <nav-vertical-organism></nav-vertical-organism>
+        <toolbar-organism [fields]="formSchemaGeneralSettings.fields"></toolbar-organism>
+        <section class="mobilform-canvas-area">
+            <port-dynamic-form-builder [schemaFormFields]="formSchemaGeneralSettings"></port-dynamic-form-builder>
+        </section>
+        <settings-bar-organism [fields]="formSchemaGeneralSettings.fields"></settings-bar-organism>
+    </section>
+</ng-container>

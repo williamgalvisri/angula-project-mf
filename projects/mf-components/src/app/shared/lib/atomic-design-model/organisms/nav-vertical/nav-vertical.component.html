@@ -1,0 +1,8 @@
+<nav class="mobilform-organism-nav-vertical slide-right-vertical-nav">
+    <figure [ngClass]="{'mobilform-organism-nav-vertical__button': true, 'mobilform-organism-nav-vertical__button-active': selectedSection === 'forms'}" (click)="showSection('forms')">
+        <layers-icon-svg></layers-icon-svg>
+    </figure>
+    <figure [ngClass]="{'mobilform-organism-nav-vertical__button': true, 'mobilform-organism-nav-vertical__button-active': selectedSection === 'elements'}" (click)="showSection('elements')">
+        <plus-icon-svg></plus-icon-svg>
+    </figure>
+</nav>

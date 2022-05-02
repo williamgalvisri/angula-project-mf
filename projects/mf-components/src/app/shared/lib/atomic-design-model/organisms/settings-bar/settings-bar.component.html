@@ -1,0 +1,487 @@
+<side-menu-container-molecule *ngIf="selectedTypeField">
+    <section class="mobilform-settings-bar__container__header">
+        Settings
+        <x-icon-svg class="mobilform-settings-bar__container__header__button" (click)="closeSettingNav()"></x-icon-svg>
+    </section>
+    <ng-container [ngTemplateOutlet]="settingElementContent"></ng-container>
+</side-menu-container-molecule>
+
+<ng-template #settingElementContent>
+    <div [ngSwitch]="selectedTypeField">
+      <!-- Type label -->
+      <div class="mobilform-settings-bar_container__body" *ngSwitchCase="getType('ELEMENT_LABEL')">
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'title'"
+            [label]="'Label'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+      </div>
+      <!-- Type Textbox -->
+      <div class="mobilform-settings-bar_container__body" *ngSwitchCase="getType('ELEMENT_TEXT')">
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'key'"
+            [label]="'Property name'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'label'"
+            [label]="'Label'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements" >
+          <label-text-field-moelcule
+            [key]="'value'"
+            [label]="'Value'"
+            [type]="'text'"
+            [multiline]="true"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-checkbox-molecule
+            [key]="'disabled'"
+            [title]="'Disabled'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          >
+          </label-checkbox-molecule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-checkbox-molecule
+            [key]="'required'"
+            [title]="'Required'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          >
+          </label-checkbox-molecule>
+        </section>
+      </div>
+      <div class="mobilform-settings-bar_container__body" *ngSwitchCase="getType('ELEMENT_TEXTAREA')">
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'key'"
+            [label]="'Property name'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'label'"
+            [label]="'Label'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements" >
+          <label-text-field-moelcule
+            [key]="'value'"
+            [label]="'Value'"
+            [type]="'text'"
+            [multiline]="true"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-checkbox-molecule
+            [key]="'disabled'"
+            [title]="'Disabled'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          >
+          </label-checkbox-molecule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-checkbox-molecule
+            [key]="'required'"
+            [title]="'Required'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          >
+          </label-checkbox-molecule>
+        </section>
+      </div>
+      <div class="mobilform-settings-bar_container__body" *ngSwitchCase="getType('ELEMENT_DATE')">
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'key'"
+            [label]="'Property name'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'label'"
+            [label]="'Label'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-checkbox-molecule
+            [key]="'required'"
+            [title]="'Required'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          >
+          </label-checkbox-molecule>
+        </section>
+      </div>
+      <div class="mobilform-settings-bar_container__body" *ngSwitchCase="getType('ELEMENT_CHECKBOX')">
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'key'"
+            [label]="'Property name'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'title'"
+            [label]="'Label'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+      </div>
+      <!-- Type button -->
+      <div class="mobilform-settings-bar_container__body" *ngSwitchCase="getType('ELEMENT_BUTTON')">
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'title'"
+            [label]="'Label'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <label-checkbox-molecule
+          [key]="'disableWithControls'"
+          [title]="'Check Control Values?'"
+          [formGroup]="formGroupSetting"
+          [elementTheming]="elementTheming"
+        >
+        </label-checkbox-molecule>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-dropdown-molecule
+            [key]="'eventType'"
+            [label]="'Type Event'"
+            [options]="buttonOptionEventType"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          >
+          </label-dropdown-molecule>
+        </section>
+        <section *ngIf="getValueFromFormGroup(formGroupSetting, 'eventType') === 'fillDataTable'">
+          <label-atom
+            [title]="'Reference Table Data'"
+            [style]="elementThemingSettingNav['label']"
+          ></label-atom>
+          <label-dropdown-molecule
+            [key]="'keyTable'"
+            [placeholder]="'Table reference'"
+            [options]="getAllTableReference()"
+            [elementTheming]="elementTheming"
+            [formGroup]="formGroupDataReference"
+          >
+          </label-dropdown-molecule>
+          <section class="mobilform-settings-bar_container__body__elements">
+            <ng-container *ngIf="formGroupDataReference.controls?.['reference']?.value.length">
+              <section [formGroup]="formGroupDataReference">
+                <!-- <ng-container [formArrayName]="'reference'">  -->
+                  <div  *ngFor="let _ of getFormArray(formGroupDataReference, 'reference').controls; let i = index">
+                    <section class="mobilform-settings-bar_container__body__elements__options-grid">
+                        <section class="mobilform-settings-bar_container__body__elements_options-grid__section-select">
+                            <label-dropdown-molecule
+                                [key]="'columnReference'"
+                                [placeholder]="'Column'"
+                                [options]="getColumnsByTableReference()"
+                                [elementTheming]="elementThemingSettingNav"
+                                [formGroup]="getGroupOption(formGroupDataReference, 'reference', i)"
+                            ></label-dropdown-molecule>
+                            <label-dropdown-molecule
+                                [key]="'fieldReference'"
+                                [placeholder]="'Field'"
+                                [options]="getFieldsByTableReference()"
+                                [elementTheming]="elementThemingSettingNav"
+                                [formGroup]="getGroupOption(formGroupDataReference, 'reference', i)"
+                            ></label-dropdown-molecule>
+                        </section>
+                        <section class="mobilform-settings-bar_container__body__elements_options-grid__section-button">
+                            <plus-circle-icon-svg class="mobilform-settings-bar_container__body__elements_options-grid__section-button__icon" (click)="addNewControl(formGroupDataReference, 'reference', createReference())"></plus-circle-icon-svg>
+                            <minus-circle-icon-svg class="mobilform-settings-bar_container__body__elements_options-grid__section-button__icon" (click)="removeControl(formGroupDataReference, 'reference', i)"></minus-circle-icon-svg>
+                        </section>
+                    </section>
+                  </div>
+                <!-- </ng-container> -->
+              </section>
+            </ng-container>
+            <ng-container *ngIf="!formGroupDataReference.controls?.['reference']?.value.length">
+              <ng-container [ngTemplateOutlet]="addButtonOptions" [ngTemplateOutletContext]="{
+                label: 'Add Reference',
+                key: 'reference',
+                formGroup: formGroupDataReference,
+                newElement: createReference()
+              }" ></ng-container>
+            </ng-container>
+          </section>
+        </section>
+        <ng-container *ngIf="getValueFromFormGroup(formGroupSetting, 'eventType') === 'fetching'">
+          <section class="mobilform-settings-bar_container__body__elements" >
+            <label-text-field-moelcule
+              [key]="'urlFetching'"
+              [label]="'Url Fetching'"
+              [type]="'text'"
+              [formGroup]="getFormGroupFromFormGroupGeneral(formGroupSetting, 'fetching')"
+              [elementTheming]="elementTheming"
+            ></label-text-field-moelcule>
+          </section>
+          <section class="mobilform-settings-bar_container__body__elements">
+            <label-atom
+                [title]="'Fetching properties'"
+                [style]="elementTheming['label']"
+            ></label-atom>
+            <ng-container *ngFor="let key of getFieldControls()">
+              <label-checkbox-molecule
+                [key]="key"
+                [title]="key"
+                [formGroup]="getFormGroupFromFormGroupGeneral(getFormGroupFromFormGroupGeneral(formGroupSetting, 'fetching'), 'keys')"
+                [elementTheming]="elementTheming"
+              >
+              </label-checkbox-molecule>
+            </ng-container>
+          </section>
+        </ng-container>
+      </div>
+      <!-- Type table -->
+      <div class="mobilform-settings-bar_container__body" *ngSwitchCase="getType('ELEMENT_TABLE')">
+        <section class="mobilform-settings-bar_container__body__elements"> 
+          <ng-container [ngTemplateOutlet]="sectionOptions" [ngTemplateOutletContext]="{
+            keyArrayName: 'header',
+            titleSection: 'Column',
+            labelButtonAdd: 'Add Column',
+            formGroup: formGroupSetting,
+            newElement: createItemFormArray()
+          }" ></ng-container> 
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements" >
+          <label-text-field-moelcule
+            [key]="'value'"
+            [label]="'Value'"
+            [type]="'text'"
+            [multiline]="true"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <ng-container [ngTemplateOutlet]="sectionFetching" ></ng-container>
+      </div>
+      <!-- Type table -->
+      <div class="mobilform-settings-bar_container__body" *ngSwitchCase="getType('ELEMENT_DROPDOWN')">
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'key'"
+            [label]="'Property name'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'label'"
+            [label]="'Label'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-checkbox-molecule
+            [key]="'required'"
+            [title]="'Required'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          >
+          </label-checkbox-molecule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'optionsVariable'"
+            [label]="'QueryVariable'"
+            [type]="'text'"
+            [multiline]="true"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+          <ng-container [ngTemplateOutlet]="sectionOptions" [ngTemplateOutletContext]="{
+            keyArrayName: 'options',
+            titleSection: 'Options',
+            labelButtonAdd: 'Add Option',
+            formGroup: formGroupSetting,
+            newElement: createItemFormArray()
+          }" ></ng-container> 
+        </section>
+        <ng-container [ngTemplateOutlet]="sectionFetching" ></ng-container>
+      </div>
+      <!-- Type radio -->
+      <div class="mobilform-settings-bar_container__body" *ngSwitchCase="getType('ELEMENT_RADIO')">
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'key'"
+            [label]="'Property name'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+          <label-text-field-moelcule
+            [key]="'label'"
+            [label]="'Label'"
+            [type]="'text'"
+            [formGroup]="formGroupSetting"
+            [elementTheming]="elementTheming"
+          ></label-text-field-moelcule>
+        </section>
+        <section class="mobilform-settings-bar_container__body__elements">
+            <ng-container [ngTemplateOutlet]="sectionOptions" [ngTemplateOutletContext]="{
+              keyArrayName: 'options',
+              titleSection: 'Options',
+              labelButtonAdd: 'Add Option',
+              formGroup: formGroupSetting,
+              newElement: createItemFormArray()
+            }" ></ng-container> 
+        </section>
+      </div>
+
+      <div class="mobilform-settings-bar_container__body" *ngSwitchCase="getType('ELEMENT_EXAMPLE')">
+        <section class="mobilform-settings-bar_container__body__elements">
+          hola soy el setting de example
+        </section>
+      </div>
+      <!-- Type Taxtbox -->
+    </div>
+    <div class="mobilform-settings-bar_container__body">
+      <button-atom [title]="'Apply Changes'" [style]="elementTheming['button']" (click)="applyChangesFormSettings()"></button-atom>
+    </div>
+  </ng-template>
+
+  <ng-template #sectionOptions 
+    let-keyArrayName="keyArrayName" 
+    let-titleSection="titleSection" 
+    let-labelButtonAdd="labelButtonAdd" 
+    let-formGroup="formGroup" 
+    let-newElement="newElement">
+      <label-atom
+          [title]="titleSection"
+          [style]="elementTheming['label']"
+      ></label-atom>
+      <ng-container *ngIf="formGroup.controls?.[keyArrayName]?.value.length">
+        <section [formGroup]="formGroup">
+          <ng-container [formArrayName]="keyArrayName"> 
+            <div  *ngFor="let _ of getFormArray(formGroup, keyArrayName).controls; let i = index">
+              <section class="mobilform-settings-bar_container__body__elements__options-grid">
+                  <section class="mobilform-settings-bar_container__body__elements_options-grid__section-input">
+                      <label-text-field-moelcule
+                          [key]="'key'"
+                          [placeholder]="'key'"
+                          [type]="'text'"
+                          [elementTheming]="elementThemingSettingNav"
+                          [formGroup]="getGroupOption(formGroup, keyArrayName, i)"
+                      ></label-text-field-moelcule>
+                      <label-text-field-moelcule
+                          [key]="'label'"
+                          [placeholder]="'label'"
+                          [type]="'text'"
+                          [elementTheming]="elementThemingSettingNav"
+                          [formGroup]="getGroupOption(formGroup, keyArrayName, i)"
+                      ></label-text-field-moelcule>
+                  </section>
+                  <section class="mobilform-settings-bar_container__body__elements_options-grid__section-button">
+                      <plus-circle-icon-svg class="mobilform-settings-bar_container__body__elements_options-grid__section-button__icon" (click)="addNewControl(formGroup, keyArrayName, newElement)"></plus-circle-icon-svg>
+                      <minus-circle-icon-svg class="mobilform-settings-bar_container__body__elements_options-grid__section-button__icon" (click)="removeControl(formGroup, keyArrayName, i)"></minus-circle-icon-svg>
+                  </section>
+              </section>
+            </div>
+          </ng-container>
+        </section>
+      </ng-container>
+      <ng-container *ngIf="!formGroup.controls?.[keyArrayName]?.value.length">
+          <ng-container [ngTemplateOutlet]="addButtonOptions" [ngTemplateOutletContext]="{
+              label: labelButtonAdd,
+              key: keyArrayName,
+              formGroup: formGroup,
+              newElement: newElement
+            }" ></ng-container>
+      </ng-container>
+  </ng-template >
+
+
+  <ng-template #addButtonOptions let-label="label" let-key="key" let-formGroup="formGroup" let-newElement="newElement">
+    <section class="mobilform-settings-bar_container__body__elements__button-add-column" (click)="addNewControl(formGroup, key, newElement)">
+        <plus-icon-svg [dimension]="30" [isCircle]="false" ></plus-icon-svg>
+        <label-atom
+            [title]="label"
+            [style]="{
+                fontSize: '18px',
+                color: 'white',
+                marginBottom: '0',
+                cursor: 'pointer'
+            }"
+        ></label-atom>
+    </section>
+  </ng-template>
+
+  <ng-template #sectionFetching>
+    <section class="mobilform-settings-bar_container__body__elements" >
+      <label-dropdown-molecule
+        [key]="'typEvent'"
+        [label]="'Event Type'"
+        [options]="elementsOptionEventType"
+        [formGroup]="getFormGroupFromFormGroupGeneral(formGroupSetting, 'fetching')"
+        [elementTheming]="elementTheming"
+      ></label-dropdown-molecule>
+    </section>
+    <section class="mobilform-settings-bar_container__body__elements" >
+      <label-text-field-moelcule
+      [key]="'urlFetching'"
+      [label]="'Url Fetching'"
+      [type]="'text'"
+      [formGroup]="getFormGroupFromFormGroupGeneral(formGroupSetting, 'fetching')"
+      [elementTheming]="elementTheming"
+      ></label-text-field-moelcule>
+    </section>
+    <section class="mobilform-settings-bar_container__body__elements" >
+      <label-dropdown-molecule
+        [key]="'variable'"
+        [label]="'Assign To Variable'"
+        [options]="variables"
+        [formGroup]="getFormGroupFromFormGroupGeneral(formGroupSetting, 'fetching')"
+        [elementTheming]="elementTheming"
+      ></label-dropdown-molecule>
+    </section>
+  </ng-template>
+  
